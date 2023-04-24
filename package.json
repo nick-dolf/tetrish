@@ -1,0 +1,33 @@
+{
+  "name": "tetrish",
+  "version": "1.0.0",
+  "description": "A mutant tetris clone",
+  "source": "src/index.pug",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "staging": "parcel build --public-url /toys/tetrish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-dolf/tetrish.git"
+  },
+  "keywords": [
+    "Webgl"
+  ],
+  "author": "Nick Dolf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nick-dolf/tetrish/issues"
+  },
+  "homepage": "https://github.com/nick-dolf/tetrish#readme",
+  "dependencies": {
+    "parcel": "^2.8.3"
+  },
+  "devDependencies": {
+    "@parcel/compressor-gzip": "^2.8.3",
+    "@parcel/transformer-pug": "^2.8.3",
+    "@parcel/transformer-sass": "^2.8.3",
+    "@parcel/transformer-stylus": "^2.8.3"
+  }
+}
