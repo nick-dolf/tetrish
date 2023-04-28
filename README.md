@@ -12,7 +12,7 @@ Parcel is used as the build system
 - `npm run build` to run parcel and build site 
 
 # Technologies Used
-[WebGl](https://www.khronos.org/webgl/) - 3D graphics
+[ThreeKS](https://threejs.org/) - 3D graphics
 
 [Parcel](https://parceljs.org/) - build tool
 
