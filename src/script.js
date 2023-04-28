@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import Tetrimino from "./scripts/tetrimino";
+import control from "./scripts/controls";
 
 const canvasWidth = 300;
 const canvasHeight = 600;
@@ -12,21 +13,34 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
+camera.position.set(4,8,12)
 
-const renderer = new THREE.WebGLRenderer();
+
+const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize(canvasWidth, canvasHeight);
 document.getElementById("canvas").appendChild(renderer.domElement);
 
-const spotlight = new THREE.DirectionalLight({ color: 0x00ffff });
-spotlight.position.set(1, 1, 4);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.2)
+scene.add(ambientLight)
+
+const spotlight = new THREE.DirectionalLight(0xffffff, 1);
+spotlight.position.set(8, 16, 4);
+spotlight.target.position.set(4,1,1)
 scene.add(spotlight);
 
-// const light = new THREE.AmbientLight({color: 0xFFF, intensity: 0.1})
-// scene.add(light)
+const points = []
+points.push( new THREE.Vector3(0,0,1))
+points.push( new THREE.Vector3(0,16,1))
+points.push( new THREE.Vector3(8,16,1))
+points.push( new THREE.Vector3(8,0,1))
+points.push( new THREE.Vector3(0,0,1))
+const geometry = new THREE.BufferGeometry().setFromPoints( points );
+const material = new THREE.LineBasicMaterial( { color: 0xffffff } );
+const line = new THREE.Line( geometry, material );
+scene.add(line)
 
-camera.position.z = 10;
-
-let activeTetrimino = new Tetrimino(0, 3);
+let activeTetrimino = new Tetrimino(4, 16, 0xFF0000);
+control(activeTetrimino)
 scene.add(activeTetrimino);
 
 function animate() {
@@ -42,18 +56,3 @@ function animate() {
 let tick = 0;
 renderer.render(scene, camera);
 animate();
-
-document.addEventListener("keydown", (event) => {
-  switch (event.key) {
-    case "d":
-      activeTetrimino.position.x += 1;
-      break;
-    case "a":
-      activeTetrimino.position.x -= 1;
-      break;
-    case "s":
-      activeTetrimino.position.y -= 1;
-      tick = 0
-			break;
-  }
-});
