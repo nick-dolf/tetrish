@@ -1,17 +1,15 @@
 import * as THREE from "three";
 import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper.js';
 import Block from "./block"
+import shapes from '../assets/shapes.json'
 
+console.log(shapes[0])
 
 class Tetrimino extends THREE.Group {
   constructor(x, y, color) {
     super();
 
-    let shape = [
-      [0, 1, 0],
-      [1, 1, 1],
-      [0, 0, 0],
-    ];
+    let shape = shapes[1]
 
 
     const geometry1 = new Block(1,0.75,.1);

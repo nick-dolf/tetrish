@@ -6,11 +6,12 @@ import World from "./scripts/world";
 import control from "./scripts/controls";
 
 const beep = new URL(
-  'assets/sound46.mp3',
+  'assets/sound2.mp3',
   import.meta.url
 );
 
 const myAudio = document.createElement("audio");
+myAudio.volume = 0.1
 myAudio.src = beep;
 
 
@@ -54,7 +55,7 @@ function animate() {
   if (tick >= framesPerTick) {
     tick = 0;
     activeTetrimino.position.y -= 1;
-    myAudio.play();
+    //myAudio.play();
   }
 
   renderer.render(scene, camera);
