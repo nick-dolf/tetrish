@@ -36,6 +36,9 @@ scene.add(activeTetrimino);
 
 
 control(activeTetrimino,camera);
+
+
+
 function animate() {
   tick++;
   if (tick >= framesPerTick) {

@@ -11,7 +11,16 @@ class World extends THREE.Group {
     this.add(caseMesh)
 
     const floorGeometry = new THREE.BoxGeometry(8, 1, 8)
-    const floorMaterial = new THREE.MeshToonMaterial()
+    const loader = new THREE.TextureLoader();
+    const imageUrl = new URL(
+      'marble.jpg?width=400',
+      import.meta.url
+    );
+
+
+    const floorMaterial = new THREE.MeshPhongMaterial({
+      map: loader.load(imageUrl),
+    });
     const floor = new THREE.Mesh(floorGeometry, floorMaterial)
     floor.position.y = -8
     floor.receiveShadow = true
