@@ -13,7 +13,7 @@ class World extends THREE.Group {
     const floorGeometry = new THREE.BoxGeometry(8, 1, 8)
     const loader = new THREE.TextureLoader();
     const imageUrl = new URL(
-      'marble.jpg?width=400',
+      './marble.jpg?as=webp&width=250',
       import.meta.url
     );
 
